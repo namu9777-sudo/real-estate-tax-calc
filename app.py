@@ -56,14 +56,35 @@ with tab1:
         b_fee = p * 0.004 # 평균 요율 적용
         return a_tax, e_tax, ag_tax, b_fee
 
-    if st.button("🚀 부대비용 계산"):
+if st.button("🚀 부대비용 계산"):
         a, e, ag, b = get_detailed_tax(price, house_count, is_adjusted, is_first_home, is_over_85)
         total = a + e + ag + b
+        
         st.markdown(f"""
         <div class="result-card">
-            <h3>📊 예상 부대비용 합계</h3>
-            <h2 style='color: #d9534f;'>약 {total:,.0f} 원</h2>
-            <p style='font-size: 0.9rem;'>취득세 {a:,.0f} / 교육세 {e:,.0f} / 농특세 {ag:,.0f} / 복비 {b:,.0f}</p>
+            <p style='margin: 0; font-size: 1.1rem; color: #666; font-weight: 600;'>📊 예상 총 소요 비용</p>
+            <h1 style='margin: 10px 0; color: #d9534f; font-size: 2.8rem; border-bottom: 2px solid #eee; padding-bottom: 15px;'>
+                {total:,.0f}<span style='font-size: 1.5rem;'> 원</span>
+            </h1>
+            
+            <div style='margin-top: 20px;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 10px;'>
+                    <span style='font-size: 1.3rem; font-weight: 700;'>🏠 취득세(본세)</span>
+                    <span style='font-size: 1.3rem; font-weight: 700;'>{a:,.0f} 원</span>
+                </div>
+                <div style='display: flex; justify-content: space-between; color: #555; margin-bottom: 8px;'>
+                    <span style='font-size: 1.1rem;'>└ 지방교육세</span>
+                    <span style='font-size: 1.1rem;'>{e:,.0f} 원</span>
+                </div>
+                <div style='display: flex; justify-content: space-between; color: #555; margin-bottom: 8px;'>
+                    <span style='font-size: 1.1rem;'>└ 농어촌특별세</span>
+                    <span style='font-size: 1.1rem;'>{ag:,.0f} 원</span>
+                </div>
+                <div style='display: flex; justify-content: space-between; color: #2980b9; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ccc;'>
+                    <span style='font-size: 1.2rem; font-weight: 700;'>🤝 예상 중개수수료</span>
+                    <span style='font-size: 1.2rem; font-weight: 700;'>{b:,.0f} 원</span>
+                </div>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
