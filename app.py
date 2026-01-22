@@ -116,5 +116,5 @@ st.markdown(f"""
         3. 정확한 정보는 세무사, 법무사 등 전문가를 통해 확인하시기 바랍니다.<br>
         4. 건축가 킴은 본 결과에 대해 법적 책임을 지지 않습니다.
     </div>
-    <p style='text-align: center; color: #999; margin-top: 20px;'>로또는 소액으로 즐기면서 하세요!!!</p>
+    <p style='text-align: center; color: #999; margin-top: 20px;'>항상 행운이 함께 하세요!!!</p>
     """, unsafe_allow_html=True)
