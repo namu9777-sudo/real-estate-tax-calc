@@ -74,9 +74,15 @@ with tab1:
             <div style='font-size: 1.3rem; line-height: 2.2;'>
                 <b>🏠 취득세:</b> {a_tax:,.0f} 원<br>
                 <b>└ 지방교육세:</b> {e_tax:,.0f} 원<br>
-                <b>└ 농어촌특별세:</b> {ag_tax:,.0f} 원<br>
+                <b>└ 농어촌특별세:</b> {ag_tax:,.0f} 원 
+                <span style='font-size: 0.9rem; color: #ef5350; font-weight: bold;'>
+                    {"(85㎡ 초과 0.2% 부과)" if is_over_85 else "(85㎡ 이하 비과세)"}
+                </span><br>
                 <b>🤝 예상 중개보수:</b> {b_fee:,.0f} 원
             </div>
+            <p style='margin-top: 15px; font-size: 0.95rem; color: #555; background: #f9f9f9; padding: 10px; border-radius: 8px;'>
+                💡 <b>건축가 킴의 팁:</b> 전용면적 85㎡를 기준으로 농특세 부과 여부가 결정됩니다. 84㎡ 이하 '국민주택규모' 설계가 세금 측면에서 유리한 이유입니다.
+            </p>
         </div>
         """, unsafe_allow_html=True)
 
