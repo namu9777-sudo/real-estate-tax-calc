@@ -56,37 +56,41 @@ with tab1:
         b_fee = p * 0.004 # 평균 요율 적용
         return a_tax, e_tax, ag_tax, b_fee
 
-if st.button("🚀 부대비용 계산"):
+# --- [TAB 1: 세금 및 부대비용] 결과 출력 부분 ---
+    if st.button("🚀 부대비용 계산"):
+        # 데이터 계산 (변수명 확인 필수)
         a, e, ag, b = get_detailed_tax(price, house_count, is_adjusted, is_first_home, is_over_85)
         total = a + e + ag + b
         
+        # 렌더링 시작
+        st.markdown("---")
         st.markdown(f"""
-        <div class="result-card">
-            <p style='margin: 0; font-size: 1.1rem; color: #666; font-weight: 600;'>📊 예상 총 소요 비용</p>
-            <h1 style='margin: 10px 0; color: #d9534f; font-size: 2.8rem; border-bottom: 2px solid #eee; padding-bottom: 15px;'>
-                {total:,.0f}<span style='font-size: 1.5rem;'> 원</span>
+        <div style="background-color: #ffffff; padding: 30px; border-radius: 20px; border: 3px solid #2c3e50; box-shadow: 10px 10px 0px #2c3e50;">
+            <p style='margin: 0; font-size: 1.2rem; color: #666; font-weight: 700;'>📊 예상 총 소요 비용</p>
+            <h1 style='margin: 15px 0; color: #d9534f; font-size: 3.2rem; border-bottom: 3px solid #eee; padding-bottom: 20px; font-weight: 900;'>
+                {total:,.0f}<span style='font-size: 1.8rem;'> 원</span>
             </h1>
             
-            <div style='margin-top: 20px;'>
-                <div style='display: flex; justify-content: space-between; margin-bottom: 10px;'>
-                    <span style='font-size: 1.3rem; font-weight: 700;'>🏠 취득세(본세)</span>
-                    <span style='font-size: 1.3rem; font-weight: 700;'>{a:,.0f} 원</span>
+            <div style='margin-top: 25px;'>
+                <div style='display: flex; justify-content: space-between; margin-bottom: 12px;'>
+                    <span style='font-size: 1.5rem; font-weight: 800; color: #111;'>🏠 취득세(본세)</span>
+                    <span style='font-size: 1.5rem; font-weight: 800; color: #111;'>{a:,.0f} 원</span>
                 </div>
-                <div style='display: flex; justify-content: space-between; color: #555; margin-bottom: 8px;'>
-                    <span style='font-size: 1.1rem;'>└ 지방교육세</span>
-                    <span style='font-size: 1.1rem;'>{e:,.0f} 원</span>
+                <div style='display: flex; justify-content: space-between; color: #444; margin-bottom: 10px; padding-left: 10px;'>
+                    <span style='font-size: 1.25rem; font-weight: 600;'>└ 지방교육세</span>
+                    <span style='font-size: 1.25rem; font-weight: 600;'>{e:,.0f} 원</span>
                 </div>
-                <div style='display: flex; justify-content: space-between; color: #555; margin-bottom: 8px;'>
-                    <span style='font-size: 1.1rem;'>└ 농어촌특별세</span>
-                    <span style='font-size: 1.1rem;'>{ag:,.0f} 원</span>
+                <div style='display: flex; justify-content: space-between; color: #444; margin-bottom: 10px; padding-left: 10px;'>
+                    <span style='font-size: 1.25rem; font-weight: 600;'>└ 농어촌특별세</span>
+                    <span style='font-size: 1.25rem; font-weight: 600;'>{ag:,.0f} 원</span>
                 </div>
-                <div style='display: flex; justify-content: space-between; color: #2980b9; margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ccc;'>
-                    <span style='font-size: 1.2rem; font-weight: 700;'>🤝 예상 중개수수료</span>
-                    <span style='font-size: 1.2rem; font-weight: 700;'>{b:,.0f} 원</span>
+                <div style='display: flex; justify-content: space-between; color: #2980b9; margin-top: 20px; padding-top: 15px; border-top: 2px dashed #ccc;'>
+                    <span style='font-size: 1.4rem; font-weight: 800;'>🤝 예상 중개수수료</span>
+                    <span style='font-size: 1.4rem; font-weight: 800;'>{b:,.0f} 원</span>
                 </div>
             </div>
         </div>
-        """, unsafe_allow_html=True)
+        """, unsafe_allow_html=True) # <-- 이 부분이 가장 중요합니다!
 
 # --- [TAB 2: 대출 한도 시뮬레이션] ---
 with tab2:
